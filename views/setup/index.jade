@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+  div.row
+    div.col-md-12
+      each q in questions
+        div.row
+          div.col-md-12.question-link
+            a(href='/setup/deleteQuestion?_id=' + q._id)
+              span.glyphicon.glyphicon-remove-sign
+            a(href='/setup/question?_id=' + q._id)= q.question
+  div.row
+    div.col-md-6
+      a(href='/setup/new')
+        button.btn.btn-success New Question

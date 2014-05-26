@@ -7,6 +7,8 @@ var express = require('express')
   , stylus = require('stylus')
   , nib = require('nib');
 
+var db = require('./lib/db');
+
 var routes = require('./routes/index');
 
 var app = express();
@@ -28,7 +30,8 @@ app.use(stylus.middleware({
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
+app.use('/', routes.index);
+app.use('/setup/', routes.setup);
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -61,5 +64,6 @@ app.use(function(err, req, res, next) {
     });
 });
 
+db.connect('localhost/hack_trivia');
 
 module.exports = app;

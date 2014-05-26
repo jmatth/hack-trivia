@@ -1,0 +1,18 @@
+extends ../layout
+
+block content
+  div.row
+    div.col-md-12
+      form.form-horizontal(role='form', action='saveQuestion', method='post')
+        div.form-group
+          input.form-control#inputQuestion(type='text', name='inputQuestion', placeholder='Question', value=question.question)
+        each c in ['A', 'B', 'C', 'D', 'E']
+          div.form-group
+            if question.correctAnswer === c
+              input.form-control.answer-radio(type='radio', name='isCorrect', value=c, checked)
+            else
+              input.form-control.answer-radio(type='radio', name='isCorrect', value=c)
+            input.form-control.answer-text(name='inputAnswer' + c, type='text', placeholder='Answer ' + c, value=question.answers[c])
+        if typeof question._id !== 'undefined'
+          input(type='hidden', name='_id', value=question._id)
+        button.btn.btn-default(type='submit') Save
