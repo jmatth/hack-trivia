@@ -6,7 +6,7 @@ block content
       each q in questions
         div.row
           div.col-md-12.question-link
-            a(href='/setup/deleteQuestion?_id=' + q._id)
+            a(href='/setup/deleteQuestion?_id=' + q._id, style='color: red')
               span.glyphicon.glyphicon-remove-sign
             a(href='/setup/question?_id=' + q._id)= q.question
   div.row

@@ -1,5 +1,10 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  div.row
+    div.col-md-12
+      h1 Hello Hackers
+      img.center-block(src='images/HAL9000.svg', width=150)
+  div.row
+    div.col-md-12
+      h1= 'Add ' + twilioNumber + ' to your contacts for trivia later.'
