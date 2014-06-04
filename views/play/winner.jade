@@ -1,0 +1,11 @@
+extends ../layout
+
+block content
+  div.row
+    div.col-md-12
+      h3= 'Correct Answer: ' + question.correctAnswer + ' - ' + question.answers[question.correctAnswer]
+      h2= 'Winner: ' + winner
+  div.row
+    div.col-md-12
+      a(href='/play/q?index=' + (index + 1))
+        btn.btn.btn-success Next Question

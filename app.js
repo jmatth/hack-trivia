@@ -7,7 +7,10 @@ var express = require('express')
   , stylus = require('stylus')
   , nib = require('nib');
 
-var db = require('./lib/db');
+var config = require('./config');
+
+var db = require('./lib/db')
+  , phone = require('./lib/phone');
 
 var routes = require('./routes/index');
 
@@ -32,6 +35,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes.index);
 app.use('/setup/', routes.setup);
+app.use('/hooks/', routes.hooks);
+app.use('/play/', routes.play);
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -65,5 +70,6 @@ app.use(function(err, req, res, next) {
 });
 
 db.connect('localhost/hack_trivia');
+phone.config(config.twilio.account_sid, config.twilio.auth_token, config.twilio.number);
 
 module.exports = app;

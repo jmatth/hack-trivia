@@ -7,8 +7,12 @@ router.post('/sms', function(req, res) {
   var from = req.body.From;
   var message = req.body.Body;
   var matchAnswer = /^\s*\w/;
-  var answer = from.match(matchAnswer)[0].trim();
-  voteCollector.recordAnswer(from, answer);
+  var match = message.match(matchAnswer);
+  if (!match)
+    return;
+  var answer = match[0].trim();
+  console.log('Recording answer from ' + from);
+  voteCollector.recordAnswer(from, answer.toUpperCase());
 });
 
 module.exports = router;

@@ -10,3 +10,5 @@ router.get('/', function(req, res) {
 
 exports.index = router;
 exports.setup = require('./setup');
+exports.hooks = require('./hooks');
+exports.play = require('./play');

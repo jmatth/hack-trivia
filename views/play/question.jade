@@ -1,0 +1,14 @@
+extends ../layout
+
+block content
+  div.row
+    div.col-md-12
+      h2= question.question
+  for option in options
+    if question.answers[option] != ''
+      div.row
+        div.col-md-12
+          h4= option + ': ' + question.answers[option]
+  div.row
+    a(href='/play/winner?index=' + index)
+      button.btn.btn-success End Voting
