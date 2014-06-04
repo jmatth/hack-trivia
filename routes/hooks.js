@@ -13,6 +13,7 @@ router.post('/sms', function(req, res) {
   var answer = match[0].trim();
   console.log('Recording answer from ' + from);
   voteCollector.recordAnswer(from, answer.toUpperCase());
+  res.send(200);
 });
 
 module.exports = router;
