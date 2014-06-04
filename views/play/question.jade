@@ -2,13 +2,12 @@ extends ../layout
 
 block content
   div.row
-    div.col-md-12
-      h2= question.question
-  for option in options
-    if question.answers[option] != ''
-      div.row
-        div.col-md-12
-          h4= option + ': ' + question.answers[option]
+    div.col-md-6.col-md-offset-3
+      div.center-block
+        h2= question.question
+        for option in options
+          if question.answers[option] != ''
+            h4= option + ': ' + question.answers[option]
   div.row
     a(href='/play/winner?index=' + index)
       button.btn.btn-success End Voting
