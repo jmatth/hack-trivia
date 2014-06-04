@@ -32,4 +32,9 @@ router.get('/winner', function(req, res) {
   phone.sms(winner, "Congrats, you won! Come to the front to claim your prize.");
 });
 
+router.get('/end', function(req, res) {
+  res.render('play/end.jade');
+});
+
+
 module.exports = router;
