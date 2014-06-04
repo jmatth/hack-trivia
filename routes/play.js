@@ -18,7 +18,7 @@ router.get('/q', function(req, res) {
   if (index >= questions.length)
     return res.redirect('/end');
   var question = questions[index];
-  var options = Object.keys(question.answers);
+  var options = Object.keys(question.answers).sort();
 
   voteCollector.newRound(question.correctAnswer);
   res.render('play/question.jade', { question: question, options: options, index: index });
